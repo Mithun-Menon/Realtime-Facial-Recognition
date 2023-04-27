@@ -1,31 +1,30 @@
 import cv2
-import sys
+from simple_facerec import SimpleFacerec
 
-# Get user supplied values
-imagePath = sys.argv[1]
-cascPath = "haarcascade_frontalface_default.xml"
+#Encode faces from a folder
+sfr=SimpleFacerec()
+sfr.load_encoding_images("faces/")
 
-# Create the haar cascade
-faceCascade = cv2.CascadeClassifier(cascPath)
+#Load Camera
+cap=cv2.VideoCapture(0)
+cap.set(3, 640)
+cap.set(4, 480)
 
-# Read the image
-image = cv2.imread(imagePath)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-# Detect faces in the image
-faces = faceCascade.detectMultiScale(
-    gray,
-    scaleFactor=1.1,
-    minNeighbors=5,
-    minSize=(30, 30),
-    flags = cv2.cv.CV_HAAR_SCALE_IMAGE
-)
-
-print("Found {0} faces!".format(len(faces)))
-
-# Draw a rectangle around the faces
-for (x, y, w, h) in faces:
-    cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
-cv2.imshow("Faces found", image)
-cv2.waitKey(0)
+while True:
+    ret, frame=cap.read()
+    
+    #Detect faces
+    face_locations, face_names=sfr.detect_known_faces(frame)
+    for face_loc, name in zip(face_locations, face_names):
+        y1, x2, y2, x1=face_loc[0], face_loc[1], face_loc[2], face_loc[3]
+       
+        cv2.putText(frame, name,(x1,y1-10), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 200), 2)
+        cv2.rectangle(frame ,(x1, y1), (x2, y2), (0, 0, 200), 4)                                                                      
+    cv2.imshow("Frame", frame)
+    key=cv2.waitKey(1)
+    if key==27:
+        break
+        
+cap.release()
+cv2.destroyAllWindows()
