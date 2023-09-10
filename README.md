@@ -7,19 +7,19 @@ cv2: This library, known as OpenCV (Open Source Computer Vision Library), is wid
 
 SimpleFacerec: This appears to be a custom package or module for face recognition.
 
-# Creating a SimpleFacerec Object: 
+# 2. Creating a SimpleFacerec Object: 
 An instance of the SimpleFacerec class is created and assigned to the variable sfr. This object will be used for face recognition tasks.
 
-# Loading Encoded Face Images: 
+# 3. Loading Encoded Face Images: 
 The load_encoding_images method of the SimpleFacerec object (sfr) is used to load encoded face images from a folder named "faces." These encoded images serve as a reference for recognizing faces.
 
-# Setting up the Camera: 
+# 4. Setting up the Camera: 
 The code configures the camera (in this case, a webcam) using OpenCV (cv2). It sets the resolution of the camera feed to 640x480 pixels using the cap.set method.
 
-# Entering a Video Capture Loop: 
+# 5. Entering a Video Capture Loop: 
 The code enters an infinite loop (while True) to continuously capture video frames from the webcam.
 
-# Frame Capture and Face Recognition:
+# 6. Frame Capture and Face Recognition:
 
 Inside the loop, it captures a frame from the webcam using the cap.read() method. The captured frame is stored in the frame variable.
 
@@ -34,5 +34,5 @@ The processed frame with face recognition results is displayed in a window named
 
 The code waits for a key press using cv2.waitKey(1) and checks if the pressed key is the "Esc" key (key code 27). If the "Esc" key is pressed, the loop is exited.
 
-# Releasing Resources and Closing Windows: 
+# 7. Releasing Resources and Closing Windows: 
 After exiting the loop (typically by pressing the "Esc" key), the code releases the webcam feed (cap.release()) and closes all OpenCV windows (cv2.destroyAllWindows()).
