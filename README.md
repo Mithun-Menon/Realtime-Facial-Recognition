@@ -1,8 +1,8 @@
 # Realtime-Facial-Recognition
-Developers:
-  Saakshi Mathur
-  Mithun Menon
-This code continuously captures video frames from a webcam, identifies and labels recognized faces in real-time based on pre-encoded known faces, and displays the annotated video stream until the user decides to exit by pressing the "Esc" key. It is a basic implementation of real-time face recognition using OpenCV and a custom face recognition library.
+<h6>Developers:  
+  Saakshi Mathur, Mithun Menon  
+  <h6>  
+  This code continuously captures video frames from a webcam, identifies and labels recognized faces in real-time based on pre-encoded known faces, and displays the annotated video stream until the user decides to exit by pressing the "Esc" key. It is a basic implementation of real-time face recognition using OpenCV and a custom face recognition library.
 
 # 1. Importing Libraries: The code starts by importing the necessary libraries:
 
